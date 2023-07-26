@@ -1,4 +1,4 @@
-<div>Teachable Machine Image Model - p5.js and ml5.js</div>
+<div>whot</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
@@ -20,12 +20,11 @@
   }
 
   function setup() {
-    createCanvas(320, 260);
+    createCanvas(520, 560);
     // Create the video
     video = createCapture(VIDEO);
-    video.size(320, 240);
+    video.size(520, 540);
     video.hide();
-
     flippedVideo = ml5.flipImage(video);
     // Start classifying
     classifyVideo();
@@ -45,7 +44,9 @@
 
   // Get a prediction for the current video frame
   function classifyVideo() {
-    flippedVideo = ml5.flipImage(video)
+    flippedVideo = ml5.flipImage(video);
+    
+    flippedVideo.filter(GRAY);
     classifier.classify(flippedVideo, gotResult);
     flippedVideo.remove();
 
@@ -61,7 +62,9 @@
     // The results are in an array ordered by confidence.
     // console.log(results[0]);
     label = results[0].label;
+    console.log(results[0]);
     // Classifiy again!
     classifyVideo();
   }
 </script>
+
